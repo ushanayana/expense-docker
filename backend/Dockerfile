@@ -8,5 +8,6 @@ COPY package*.json ./
 
 RUN npm install
 COPY . .
+USER expense
 
 CMD [ "node","index.js" ]
