@@ -1,10 +1,14 @@
-FROM node:20
+# FROM node:20
+FROM node:20-bullseye
+USER root
+RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
+
 EXPOSE 8080
 ENV DB_HOST=mysql
 # Install mysql-client as root
 USER root
 #RUN apt-get update && apt-get install -y mysql-client && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
 
 RUN useradd expense
 RUN mkdir /opt/server
